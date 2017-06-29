@@ -23,8 +23,10 @@ public class FetchResourceTask extends AsyncTask<String, Void, Exception> {
         }
         String url = params[0];
         String savePath = params[1];
+        String fileName = params[2];
+
         try {
-            downloadAllAssets(url, savePath);
+            downloadAllAssets(url, savePath, fileName);
         } catch (Exception e) {
             return e;
         }
@@ -36,9 +38,9 @@ public class FetchResourceTask extends AsyncTask<String, Void, Exception> {
     protected void onPostExecute(Exception result) {
     }
 
-    private void downloadAllAssets(String url, String savePath) {
-        File zipFile = new File(savePath + "/resource.zip");
-        File outputDir = new File(savePath + "/resource");
+    private void downloadAllAssets(String url, String savePath, String fileName) {
+        File zipFile = new File(savePath + "/"+fileName+".zip");
+        File outputDir = new File(savePath + "/"+fileName);
 
         try {
             FileDownloader.download(url, zipFile, new File(savePath));

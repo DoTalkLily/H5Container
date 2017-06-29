@@ -1,5 +1,9 @@
 package com.tt.ly.common;
 
+import com.tt.ly.offlinepackage.ResourceRecord;
+
+import java.util.List;
+
 /**
  * Created by Seven on 17/3/17.
  */
@@ -9,7 +13,7 @@ public class ResponseWrapper {
 
     private String errMsg;
 
-    private Object data;
+    private List<ResourceRecord> data;
 
     public int getErrCode() {
         return errCode;
@@ -27,11 +31,11 @@ public class ResponseWrapper {
         this.errMsg = errMsg;
     }
 
-    public Object getData() {
+    public List<ResourceRecord> getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(List<ResourceRecord> data) {
         this.data = data;
     }
 

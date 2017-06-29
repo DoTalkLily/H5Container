@@ -1,5 +1,7 @@
+./example/.idea/*
 build/*
 *.iml
+.gradle/*
 gradle/*
 .DS_Store
 

@@ -18,7 +18,6 @@ import com.tt.ly.jsbridge.DefaultHandler;
 import com.google.gson.Gson;
 import com.tt.ly.offlinepackage.FetchResourceTask;
 import com.tt.ly.offlinepackage.ResourceManager;
-import com.tt.ly.tools.ConfigUtils;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -142,13 +141,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static String fileName = "b95857f4c80b3ea1258109776ce3fa9c.zip";
 
 	private void downloadTest() {
-		ConfigUtils.setConfigWithNameValue(getApplicationContext(),"name","lili");
-		System.out.println(ConfigUtils.getAllConfigs(getApplicationContext()));
-		System.out.println(ConfigUtils.getConfigByName(getApplicationContext(),"wanshan"));
+//		ConfigManager.setConfigWithNameValue(getApplicationContext(),"name","lili");
+//		System.out.println(ConfigManager.getAllConfigs(getApplicationContext()));
 		String url = CDN_URL + fileName;
 		String savePath = getFilesDir().getPath();
 		ResourceManager manager = new ResourceManager(getApplicationContext());
 		manager.fetchConfig();
-		new FetchResourceTask().execute( url, savePath );
+//		new FetchResourceTask().execute( url, savePath );
 	}
 }

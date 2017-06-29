@@ -1,4 +1,4 @@
-package com.tt.ly.tools;
+package com.tt.ly.offlinepackage;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,9 +10,17 @@ import java.util.Map;
 /**
  * Created by Seven on 17/3/18.
  */
-public class ConfigUtils {
+public class ConfigManager {
+    private Map mConfig;//资源名——目录映射
 
-    public static String getConfigByName(Context context, String propName){
+    public ConfigManager(Context context){
+        if(context == null){
+        }
+
+        mConfig = context.getSharedPreferences("ResourceConfig",Activity.MODE_APPEND).getAll();
+    }
+
+    public String getConfigByName(Context context, String propName){
         if(context == null || TextUtils.isEmpty(propName)){
             return null;
         }
@@ -22,17 +30,11 @@ public class ConfigUtils {
                 .getString(propName,"default");
     }
 
-    public static Map getAllConfigs(Context context){
-        if(context == null){
-            return null;
-        }
-
-        return context
-                .getSharedPreferences("ResourceConfig",Activity.MODE_APPEND)
-                .getAll();
+    public Map getAllConfigs(){
+       return this.mConfig;
     }
 
-    public static boolean setConfigWithNameValue(Context context,String propName, String value){
+    public boolean setConfigWithNameValue(Context context,String propName, String value){
         if(context == null || TextUtils.isEmpty(propName) || TextUtils.isEmpty(value)){
             return false;
         }
